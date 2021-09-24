@@ -8,12 +8,11 @@ var alhpal = "abcdefghijklmnopqrstuvwxyz".split('');
 var numbers = "0123456789".split('');
 var symbols = "!@#$%^&*_-+=".split('');
 
-//user input for length
-
 // Write password to the #password input
 function writePassword() {
   
   var password = generatePassword();
+  console.log(password);
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
@@ -49,20 +48,28 @@ function generatePassword(){
     if (addsc == true) {
       passwordchoices = passwordchoices.concat(symbols);
     }
+    console.log(pwlength);
     console.log(passwordchoices);
+    pass = [];
+    //create a while loop to add an element from passwordchoices to pass while the count is less than or equal to the user value
     let count = 1;
     while (count <= pwlength ){
       var index = Math.floor(Math.random() * passwordchoices.length);
       console.log(index);
-      var password = [];
-      console.log(password);
-      var add = passwordchoices[index];
-      password = password.push(add);
-      console.log(password);
+      temp = passwordchoices[index];
+      console.log(temp);
+      
+      pass.push(temp);
+      
+      console.log(pass);
+      
       count = count + 1;
     }
-    password = print(password.join(''));
-    console.log(password);
+    //turn password into a string
+    pass = pass.join('');
+    console.log(pass);
+    //this tells the function that the result is whatever is in pass
+    return pass;
     }
   //else statement to try again using a number
   else {
